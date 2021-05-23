@@ -19,7 +19,7 @@ class SpecialtiesRepository : SpecialtiesContract.Repository {
             ) {
                 if (response.isSuccessful) {
                     Log.d("TAG", "onResponse: " + response.body())
-                    // TODO показать список
+                    response.body()?.let { callback.onComplete(it) }
                 } else {
                     // TODO вывести ошибку
                 }

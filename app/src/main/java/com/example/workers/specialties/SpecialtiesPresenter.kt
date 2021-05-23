@@ -10,7 +10,7 @@ class SpecialtiesPresenter(var view: SpecialtiesContract.View): SpecialtiesContr
 
         repository.getData(object : SpecialtiesContract.Callback {
             override fun onComplete(response: Response) {
-                TODO("Not yet implemented")
+                
             }
 
             override fun onError() {
