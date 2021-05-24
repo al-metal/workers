@@ -10,11 +10,16 @@ class SpecialtiesPresenter(var view: SpecialtiesContract.View): SpecialtiesContr
 
         repository.getData(object : SpecialtiesContract.Callback {
             override fun onComplete(response: Response) {
-                
+                if (response.response?.size ?: 0 > 0){
+                    val list = repository.getListSpec(response)
+                    view.showSpecialties(list)
+                }else{
+                    TODO("вывести ошибку")
+                }
             }
 
             override fun onError() {
-                TODO("Not yet implemented")
+                 TODO("вывести ошибку")
             }
         })
     }

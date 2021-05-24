@@ -21,6 +21,8 @@ interface SpecialtiesContract {
 
         fun getData(callback: Callback)
 
+        fun getListSpec(response: Response): MutableList<Specialty>
+
     }
 
     interface Callback {

@@ -2,6 +2,7 @@ package com.example.workers.specialties
 
 import android.util.Log
 import com.example.workers.ApiUtils
+import com.example.workers.model.Specialty
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,5 +31,18 @@ class SpecialtiesRepository : SpecialtiesContract.Repository {
                 // TODO вывести ошибку
             }
         })
+    }
+
+    override fun getListSpec(response: com.example.workers.model.Response): MutableList<Specialty> {
+        var list: MutableList<Specialty> = mutableListOf()
+
+        for (user in response.response!!) {
+            for (spec in user.specialty!!) {
+                if (!list.contains(spec))
+                    list.add(spec)
+            }
+        }
+
+        return list
     }
 }
