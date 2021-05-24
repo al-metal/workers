@@ -5,17 +5,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.workers.R
 import com.example.workers.model.SpecialtyFull
+import com.example.workers.specialties.SpecialtiesAdapter
 
-class UsersFragment : Fragment() {
+class UsersFragment : Fragment(), UsersAdapter.UsersClickListener {
+
     private var specFull: SpecialtyFull? = null
+
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_users, container, false)
+
+        recyclerView = view.findViewById(R.id.users_recycler)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = specFull?.userList?.let { UsersAdapter(it, this) }
 
         return view
     }
@@ -27,5 +37,9 @@ class UsersFragment : Fragment() {
             usersFragment.specFull = specFull
             return usersFragment
         }
+    }
+
+    override fun userClick() {
+        TODO("Not yet implemented")
     }
 }
