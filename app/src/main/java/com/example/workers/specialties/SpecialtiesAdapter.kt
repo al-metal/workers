@@ -8,15 +8,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.workers.R
 import com.example.workers.model.Specialty
 
-class SpecialtiesAdapter(private val list: List<Specialty>) :
+class SpecialtiesAdapter(private val list: List<Specialty>,
+private val listener: SpecClickListener) :
     RecyclerView.Adapter<SpecialtiesAdapter.ViewHolder>() {
 
+    interface SpecClickListener {
+        fun specClick(position: Int)
+    }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var title: TextView? = null
 
         init {
             title = itemView.findViewById(R.id.title_specialties_text)
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            listener.specClick(adapterPosition)
         }
     }
 

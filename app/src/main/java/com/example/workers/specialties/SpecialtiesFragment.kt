@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.workers.R
 import com.example.workers.model.Specialty
 
-class SpecialtiesFragment : Fragment(), SpecialtiesContract.View {
+class SpecialtiesFragment : Fragment(), SpecialtiesContract.View,
+    SpecialtiesAdapter.SpecClickListener {
 
-    lateinit var presenter: SpecialtiesContract.Presenter
-    lateinit var recyclerView: RecyclerView
+    private lateinit var presenter: SpecialtiesContract.Presenter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var list: List<Specialty>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +31,12 @@ class SpecialtiesFragment : Fragment(), SpecialtiesContract.View {
     }
 
     override fun showSpecialties(list: List<Specialty>) {
+        this.list = list
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = SpecialtiesAdapter(list)
+        recyclerView.adapter = SpecialtiesAdapter(list, this)
+    }
+
+    override fun specClick(position: Int) {
+        println(list[position].name)
     }
 }
