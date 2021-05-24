@@ -2,12 +2,13 @@ package com.example.workers.specialties
 
 import com.example.workers.model.Response
 import com.example.workers.model.Specialty
+import com.example.workers.model.SpecialtyFull
 
 interface SpecialtiesContract {
 
     interface View {
 
-        fun showSpecialties(list: List<Specialty>)
+        fun showSpecialties(list: MutableList<SpecialtyFull>)
 
     }
 
@@ -21,7 +22,7 @@ interface SpecialtiesContract {
 
         fun getData(callback: Callback)
 
-        fun getListSpec(response: Response): MutableList<Specialty>
+        fun getListSpec(response: Response): MutableList<SpecialtyFull>
 
     }
 

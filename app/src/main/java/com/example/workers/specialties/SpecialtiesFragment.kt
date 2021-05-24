@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workers.R
 import com.example.workers.model.Specialty
+import com.example.workers.model.SpecialtyFull
 
 class SpecialtiesFragment : Fragment(), SpecialtiesContract.View,
     SpecialtiesAdapter.SpecClickListener {
 
     private lateinit var presenter: SpecialtiesContract.Presenter
     private lateinit var recyclerView: RecyclerView
-    private lateinit var list: List<Specialty>
+    private lateinit var list: MutableList<SpecialtyFull>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +31,7 @@ class SpecialtiesFragment : Fragment(), SpecialtiesContract.View,
         return view
     }
 
-    override fun showSpecialties(list: List<Specialty>) {
+    override fun showSpecialties(list: MutableList<SpecialtyFull>) {
         this.list = list
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = SpecialtiesAdapter(list, this)
