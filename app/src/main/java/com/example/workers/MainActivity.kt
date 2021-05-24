@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.workers.model.SpecialtyFull
+import com.example.workers.specialties.SpecialtiesContract
 import com.example.workers.specialties.SpecialtiesFragment
+import com.example.workers.users.UsersFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SpecialtiesContract.UsersListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,4 +32,11 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
     }
+
+    override fun gotoUsers(specFull: SpecialtyFull) {
+        val usersFragment = UsersFragment.newInstance(specFull)
+        replaceFragment(usersFragment)
+    }
+
+
 }

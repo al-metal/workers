@@ -32,4 +32,8 @@ interface SpecialtiesContract {
 
         fun onError()
     }
+
+    interface UsersListener{
+        fun gotoUsers(specFull: SpecialtyFull)
+    }
 }

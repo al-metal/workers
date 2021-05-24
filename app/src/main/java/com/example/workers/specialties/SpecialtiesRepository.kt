@@ -48,7 +48,8 @@ class SpecialtiesRepository : SpecialtiesContract.Repository {
                 if (!isDublicate)
                     specList.add(SpecialtyFull(spec.specialty_id, spec.name))
 
-                specList.find { it.specialty_id == spec.specialty_id }?.let { it.userList?.add(user) }
+                specList.find { it.specialty_id == spec.specialty_id }
+                    ?.let { it.userList?.add(user) }
             }
         }
 

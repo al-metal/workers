@@ -39,5 +39,6 @@ class SpecialtiesFragment : Fragment(), SpecialtiesContract.View,
 
     override fun specClick(position: Int) {
         println(list[position].name)
+        (activity as? SpecialtiesContract.UsersListener)?.gotoUsers(list[position])
     }
 }
