@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workers.R
 import com.example.workers.model.SpecialtyFull
+import com.example.workers.model.User
 import com.example.workers.specialties.SpecialtiesAdapter
 
 class UsersFragment : Fragment(), UsersAdapter.UsersClickListener {
@@ -39,7 +40,11 @@ class UsersFragment : Fragment(), UsersAdapter.UsersClickListener {
         }
     }
 
-    override fun userClick() {
-        TODO("Not yet implemented")
+    override fun userClick(position: Int) {
+        specFull?.userList?.get(position)?.let { (activity as? UserListener)?.gotoUser(it) }
+    }
+
+    interface UserListener {
+        fun gotoUser(user: User)
     }
 }

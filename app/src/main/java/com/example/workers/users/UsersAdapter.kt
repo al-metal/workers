@@ -12,7 +12,7 @@ class UsersAdapter (private val list: MutableList<User>,
 private val listener: UsersClickListener): RecyclerView.Adapter<UsersAdapter.ViewHolder>(){
 
     interface UsersClickListener{
-        fun userClick()
+        fun userClick(position: Int)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
@@ -30,7 +30,7 @@ private val listener: UsersClickListener): RecyclerView.Adapter<UsersAdapter.Vie
         }
 
         override fun onClick(v: View?) {
-            TODO("Not yet implemented")
+            listener.userClick(adapterPosition)
         }
 
     }
