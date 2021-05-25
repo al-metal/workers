@@ -29,13 +29,13 @@ object RetrofitClient {
     fun getClient(baseUrl: String): Retrofit? {
         if (retrofit == null) {
 
-            val interceptor = HttpLoggingInterceptor()
-            if (BuildConfig.DEBUG) {
-                interceptor.level = HttpLoggingInterceptor.Level.BODY
-            }
+//            val interceptor = HttpLoggingInterceptor()
+//            if (BuildConfig.DEBUG) {
+//                interceptor.level = HttpLoggingInterceptor.Level.BODY
+//            }
 
             val client = OkHttpClient.Builder()
-                .addInterceptor(interceptor)
+//                .addInterceptor(interceptor)
                 .connectTimeout(100, TimeUnit.SECONDS)
                 .readTimeout(100, TimeUnit.SECONDS)
                 .build()

@@ -9,8 +9,8 @@ import com.example.workers.model.User
 import com.example.workers.specialties.SpecialtiesContract
 import com.example.workers.specialties.SpecialtiesFragment
 import com.example.workers.user.UserFragment
-import com.example.workers.users.UsersAdapter
 import com.example.workers.users.UsersFragment
+
 
 class MainActivity : AppCompatActivity(), SpecialtiesContract.UsersListener,
     UsersFragment.UserListener {
