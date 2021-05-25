@@ -2,13 +2,17 @@ package com.example.workers.specialties
 
 import android.util.Log
 import com.example.workers.ApiUtils
-import com.example.workers.model.Specialty
+import com.example.workers.model.Database
 import com.example.workers.model.SpecialtyFull
+import com.example.workers.model.UserDao
+import com.example.workers.model.UserRoom
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class SpecialtiesRepository : SpecialtiesContract.Repository {
+
+    private val userDao: UserDao = Database.instance.userDao()
 
     override fun getData(callback: SpecialtiesContract.Callback) {
         val api = ApiUtils.apiService
@@ -54,5 +58,21 @@ class SpecialtiesRepository : SpecialtiesContract.Repository {
         }
 
         return specList
+    }
+
+    override suspend fun getAllUser(): List<UserRoom> {
+        return userDao.getAllUsers()
+    }
+
+    override suspend fun insertUser(user: UserRoom) {
+        userDao.insertUser(user)
+    }
+
+    override suspend fun isUser(l_name: String, f_name: String): Boolean {
+        return userDao.isUsers(l_name, f_name)
+    }
+
+    override suspend fun clearUsers() {
+        userDao.clearUsers()
     }
 }

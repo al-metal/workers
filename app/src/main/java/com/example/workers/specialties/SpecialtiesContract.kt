@@ -3,6 +3,7 @@ package com.example.workers.specialties
 import com.example.workers.model.Response
 import com.example.workers.model.Specialty
 import com.example.workers.model.SpecialtyFull
+import com.example.workers.model.UserRoom
 
 interface SpecialtiesContract {
 
@@ -23,6 +24,14 @@ interface SpecialtiesContract {
         fun getData(callback: Callback)
 
         fun getListSpec(response: Response): MutableList<SpecialtyFull>
+
+        suspend fun getAllUser(): List<UserRoom>
+
+        suspend fun insertUser(user: UserRoom)
+
+        suspend fun isUser(l_name: String, f_name: String): Boolean
+
+        suspend fun clearUsers()
 
     }
 
