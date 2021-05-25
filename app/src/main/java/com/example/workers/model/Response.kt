@@ -9,7 +9,7 @@ data class User(
     var l_name: String? = null,
     var birthday: String? = null,
     var avatr_url: String? = null,
-    var specialty: List<Specialty>? = null
+    var specialty: MutableList<Specialty>? = null
 )
 
 data class Specialty(
