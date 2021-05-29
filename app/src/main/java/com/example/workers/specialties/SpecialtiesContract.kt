@@ -1,9 +1,6 @@
 package com.example.workers.specialties
 
-import com.example.workers.model.Response
-import com.example.workers.model.Specialty
-import com.example.workers.model.SpecialtyFull
-import com.example.workers.model.UserRoom
+import com.example.workers.model.*
 
 interface SpecialtiesContract {
 
@@ -33,6 +30,10 @@ interface SpecialtiesContract {
 
         suspend fun clearUsers()
 
+        suspend fun insertSpec(specRoom: SpecialtyRoom)
+
+        suspend fun getAllSpec(): List<SpecialtyRoom>
+
     }
 
     interface Callback {
@@ -42,7 +43,7 @@ interface SpecialtiesContract {
         fun onError()
     }
 
-    interface UsersListener{
+    interface UsersListener {
         fun gotoUsers(specFull: SpecialtyFull)
     }
 }

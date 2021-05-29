@@ -18,3 +18,10 @@ data class UserRoom(
     var birthday: String? = null,
     var avatr_url: String? = null
 )
+
+@Entity
+data class SpecialtyRoom(
+    @PrimaryKey
+    var specialty_id: Int? = null,
+    var name: String? = null
+)

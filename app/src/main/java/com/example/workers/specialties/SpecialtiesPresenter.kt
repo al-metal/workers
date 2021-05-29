@@ -1,6 +1,7 @@
 package com.example.workers.specialties
 
 import com.example.workers.model.Response
+import com.example.workers.model.SpecialtyRoom
 import com.example.workers.model.UserRoom
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,6 +27,13 @@ class SpecialtiesPresenter(var view: SpecialtiesContract.View) : SpecialtiesCont
                             if (!repository.isUser(user.l_name!!, user.f_name!!)) {
                                 repository.insertUser(userRoom)
                             }
+
+                            for (s in user.specialty!!) {
+                                val spec = SpecialtyRoom()
+                                spec.name = s.name
+                                spec.specialty_id = s.specialty_id
+                                insertSpec(spec)
+                            }
                         }
                         println("wqwqwqwqwqwqwqwq2${repository.getAllUser().size}")
                     }
@@ -45,5 +53,11 @@ class SpecialtiesPresenter(var view: SpecialtiesContract.View) : SpecialtiesCont
                 TODO("вывести ошибку")
             }
         })
+    }
+
+    private fun insertSpec(specRoom: SpecialtyRoom) {
+        scope.launch {
+            repository.insertSpec(specRoom)
+        }
     }
 }
