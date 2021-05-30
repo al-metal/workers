@@ -1,22 +1,21 @@
 package com.example.workers.specialties
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workers.R
-import com.example.workers.model.Specialty
-import com.example.workers.model.SpecialtyFull
+import com.example.workers.model.SpecialtyRoom
 
 class SpecialtiesFragment : Fragment(), SpecialtiesContract.View,
     SpecialtiesAdapter.SpecClickListener {
 
     private lateinit var presenter: SpecialtiesContract.Presenter
     private lateinit var recyclerView: RecyclerView
-    private lateinit var list: MutableList<SpecialtyFull>
+    private lateinit var list: List<SpecialtyRoom>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +30,7 @@ class SpecialtiesFragment : Fragment(), SpecialtiesContract.View,
         return view
     }
 
-    override fun showSpecialties(list: MutableList<SpecialtyFull>) {
+    override fun showSpecialties(list: List<SpecialtyRoom>) {
         this.list = list
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = SpecialtiesAdapter(list, this)
@@ -39,6 +38,11 @@ class SpecialtiesFragment : Fragment(), SpecialtiesContract.View,
 
     override fun specClick(position: Int) {
         println(list[position].name)
-        (activity as? SpecialtiesContract.UsersListener)?.gotoUsers(list[position])
+        println(list[position].specialty_id)
+        list[position].specialty_id?.let {
+            (activity as? SpecialtiesContract.UsersListener)?.gotoUsers(
+                it
+            )
+        }
     }
 }

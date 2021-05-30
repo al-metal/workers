@@ -14,7 +14,7 @@ import com.example.workers.specialties.SpecialtiesAdapter
 
 class UsersFragment : Fragment(), UsersAdapter.UsersClickListener {
 
-    private var specFull: SpecialtyFull? = null
+    private var specialtyId: Int? = null
 
     private lateinit var recyclerView: RecyclerView
 
@@ -26,22 +26,22 @@ class UsersFragment : Fragment(), UsersAdapter.UsersClickListener {
 
         recyclerView = view.findViewById(R.id.users_recycler)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = specFull?.userList?.let { UsersAdapter(it, this) }
+//        recyclerView.adapter = specFull?.userList?.let { UsersAdapter(it, this) }
 
         return view
     }
 
     companion object {
 
-        fun newInstance(specFull: SpecialtyFull): UsersFragment {
+        fun newInstance(specialtyId: Int): UsersFragment {
             val usersFragment = UsersFragment()
-            usersFragment.specFull = specFull
+            usersFragment.specialtyId = specialtyId
             return usersFragment
         }
     }
 
     override fun userClick(position: Int) {
-        specFull?.userList?.get(position)?.let { (activity as? UserListener)?.gotoUser(it) }
+//        specFull?.userList?.get(position)?.let { (activity as? UserListener)?.gotoUser(it) }
     }
 
     interface UserListener {

@@ -36,28 +36,6 @@ class SpecialtiesRepository : SpecialtiesContract.Repository {
         })
     }
 
-    override fun getListSpec(response: com.example.workers.model.Response): MutableList<SpecialtyFull> {
-
-        var specList: MutableList<SpecialtyFull> = mutableListOf()
-
-        for (user in response.response!!) {
-            for (spec in user.specialty!!) {
-                var isDublicate = false
-                for (specFull in specList) {
-                    if (specFull.specialty_id == spec.specialty_id)
-                        isDublicate = true
-                }
-                if (!isDublicate)
-                    specList.add(SpecialtyFull(spec.specialty_id, spec.name))
-
-                specList.find { it.specialty_id == spec.specialty_id }
-                    ?.let { it.userList?.add(user) }
-            }
-        }
-
-        return specList
-    }
-
     override suspend fun getAllUser(): List<UserRoom> {
         return userDao.getAllUsers()
     }

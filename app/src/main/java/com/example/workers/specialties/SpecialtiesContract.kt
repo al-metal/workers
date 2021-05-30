@@ -6,7 +6,7 @@ interface SpecialtiesContract {
 
     interface View {
 
-        fun showSpecialties(list: MutableList<SpecialtyFull>)
+        fun showSpecialties(list: List<SpecialtyRoom>)
 
     }
 
@@ -19,8 +19,6 @@ interface SpecialtiesContract {
     interface Repository {
 
         fun getData(callback: Callback)
-
-        fun getListSpec(response: Response): MutableList<SpecialtyFull>
 
         suspend fun getAllUser(): List<UserRoom>
 
@@ -44,6 +42,6 @@ interface SpecialtiesContract {
     }
 
     interface UsersListener {
-        fun gotoUsers(specFull: SpecialtyFull)
+        fun gotoUsers(specialtyId: Int)
     }
 }

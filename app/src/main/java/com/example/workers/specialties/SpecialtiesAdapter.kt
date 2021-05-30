@@ -6,10 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workers.R
-import com.example.workers.model.Specialty
-import com.example.workers.model.SpecialtyFull
+import com.example.workers.model.SpecialtyRoom
 
-class SpecialtiesAdapter(private val list: MutableList<SpecialtyFull>,
+class SpecialtiesAdapter(private val list: List<SpecialtyRoom>,
                          private val listener: SpecClickListener) :
     RecyclerView.Adapter<SpecialtiesAdapter.ViewHolder>() {
 

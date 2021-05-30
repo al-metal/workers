@@ -37,14 +37,14 @@ class MainActivity : AppCompatActivity(), SpecialtiesContract.UsersListener,
         }
     }
 
-    override fun gotoUsers(specFull: SpecialtyFull) {
-        val usersFragment = UsersFragment.newInstance(specFull)
-        replaceFragment(usersFragment)
-    }
-
     override fun gotoUser(user: User) {
         val userFragment = UserFragment.newInstance(user)
         replaceFragment(userFragment)
+    }
+
+    override fun gotoUsers(specialtyId: Int) {
+        val usersFragment = UsersFragment.newInstance(specialtyId)
+        replaceFragment(usersFragment)
     }
 
 
